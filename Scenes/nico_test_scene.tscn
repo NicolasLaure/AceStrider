@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://qy6ote3u3q0m"]
+
+[ext_resource type="Texture2D" uid="uid://d1r2yhttathlu" path="res://Sprites/AcestriderSea.png" id="1_ad2th"]
+[ext_resource type="Texture2D" uid="uid://bgg0diocuh5qk" path="res://Sprites/AcestriderSkyReflection.png" id="2_aqb6c"]
+[ext_resource type="Texture2D" uid="uid://c2ixhvbdssd0y" path="res://Sprites/AcestriderSky.png" id="3_shqj2"]
+[ext_resource type="Texture2D" uid="uid://cexrigwvmbwqj" path="res://Sprites/AcestriderSkyClouds.png" id="4_gk851"]
+[ext_resource type="Texture2D" uid="uid://cu52f7avasay" path="res://Sprites/AcestriderSkyLimit.png" id="5_xuvjp"]
+[ext_resource type="Texture2D" uid="uid://bjr0u8jj8p0k2" path="res://icon.svg" id="6_nfhc5"]
+
+[sub_resource type="GDScript" id="GDScript_o8bfl"]
+script/source = "extends RigidBody2D
+
+@export var speed: float;
+@export var rotation_speed: float;
+var dir:Vector2;
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	
+	dir = Vector2.from_angle(rotation - deg_to_rad(90)) * speed;
+		
+	if(Input.is_key_pressed(KEY_A)):
+		rotate(rotation - rotation_speed * delta);
+	if(Input.is_key_pressed(KEY_D)):
+		rotate(rotation - rotation_speed * delta);
+		#rotation += rotation_speed * delta;
+			
+	pass
+	
+func _physics_process(delta):
+	if(Input.is_key_pressed(KEY_W)):
+		apply_impulse(dir);
+	pass
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
+
+[node name="LevelScene" type="Node2D"]
+position = Vector2(1, 0)
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Sea" type="Sprite2D" parent="Background"]
+position = Vector2(0, 540)
+texture = ExtResource("1_ad2th")
+
+[node name="Sky" type="Node" parent="Background"]
+
+[node name="Reflection" type="Sprite2D" parent="Background/Sky"]
+modulate = Color(1, 1, 1, 0.266667)
+z_index = 1
+position = Vector2(0, 541.25)
+scale = Vector2(1, 0.433)
+texture = ExtResource("2_aqb6c")
+flip_v = true
+
+[node name="Sky" type="Sprite2D" parent="Background/Sky"]
+z_index = -3
+texture = ExtResource("3_shqj2")
+
+[node name="Clouds" type="Sprite2D" parent="Background/Sky/Sky"]
+z_index = -2
+z_as_relative = false
+texture = ExtResource("4_gk851")
+
+[node name="Limit" type="Sprite2D" parent="Background/Sky/Sky"]
+z_index = -4
+position = Vector2(0, -320)
+texture = ExtResource("5_xuvjp")
+
+[node name="Player" type="RigidBody2D" parent="."]
+script = SubResource("GDScript_o8bfl")
+speed = 50.0
+rotation_speed = 20.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_top = -680
+limit_bottom = 600
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(0.8, 1.2)
+shape = SubResource("CapsuleShape2D_gl8v1")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+z_index = -1
+z_as_relative = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_nfhc5")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+limit_top = -680
+limit_bottom = 600
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+scale = Vector2(0.8, 1.2)
+shape = SubResource("CapsuleShape2D_gl8v1")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+z_index = -1
+z_as_relative = false
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("6_nfhc5")
