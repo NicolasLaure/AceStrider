@@ -5,36 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c2ixhvbdssd0y" path="res://Sprites/AcestriderSky.png" id="3_shqj2"]
 [ext_resource type="Texture2D" uid="uid://cexrigwvmbwqj" path="res://Sprites/AcestriderSkyClouds.png" id="4_gk851"]
 [ext_resource type="Texture2D" uid="uid://cu52f7avasay" path="res://Sprites/AcestriderSkyLimit.png" id="5_xuvjp"]
+[ext_resource type="Script" path="res://Scenes/PlayerController.gd" id="6_3xnl4"]
 [ext_resource type="Texture2D" uid="uid://bjr0u8jj8p0k2" path="res://icon.svg" id="6_nfhc5"]
-
-[sub_resource type="GDScript" id="GDScript_o8bfl"]
-script/source = "extends RigidBody2D
-
-@export var speed: float;
-@export var rotation_speed: float;
-var dir:Vector2;
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	dir = Vector2.from_angle(rotation - deg_to_rad(90)) * speed;
-		
-	if(Input.is_key_pressed(KEY_A)):
-		rotate(rotation - rotation_speed * delta);
-	if(Input.is_key_pressed(KEY_D)):
-		rotate(rotation - rotation_speed * delta);
-		#rotation += rotation_speed * delta;
-			
-	pass
-	
-func _physics_process(delta):
-	if(Input.is_key_pressed(KEY_W)):
-		apply_impulse(dir);
-	pass
-"
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
 
@@ -71,11 +43,14 @@ z_index = -4
 position = Vector2(0, -320)
 texture = ExtResource("5_xuvjp")
 
-[node name="Player" type="RigidBody2D" parent="."]
-position = Vector2(387, 178)
-script = SubResource("GDScript_o8bfl")
-speed = 50.0
-rotation_speed = 20.0
+[node name="Player" type="CharacterBody2D" parent="."]
+slide_on_ceiling = false
+floor_stop_on_slope = false
+script = ExtResource("6_3xnl4")
+speed = 500.0
+maxSpeed = 500.0
+gravity = 150.0
+rotation_speed = 250.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_top = -680

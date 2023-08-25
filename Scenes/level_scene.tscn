@@ -8,32 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bjr0u8jj8p0k2" path="res://icon.svg" id="6_a5jwt"]
 
 [sub_resource type="GDScript" id="GDScript_o8bfl"]
-script/source = "extends RigidBody2D
-
-@export var speed: float;
-@export var rotation_speed: float;
-var dir:Vector2;
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	
-	dir = Vector2.from_angle(rotation - deg_to_rad(90)) * speed;
-		
-	if(Input.is_key_pressed(KEY_A)):
-		rotate(rotation - rotation_speed * delta);
-	if(Input.is_key_pressed(KEY_D)):
-		rotate(rotation - rotation_speed * delta);
-		#rotation += rotation_speed * delta;
-			
-	pass
-	
-func _physics_process(delta):
-	if(Input.is_key_pressed(KEY_W)):
-		apply_impulse(dir);
-	pass
+script/source = "
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
@@ -73,8 +48,6 @@ texture = ExtResource("5_6nht5")
 
 [node name="Player" type="RigidBody2D" parent="."]
 script = SubResource("GDScript_o8bfl")
-speed = 50.0
-rotation_speed = 20.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 limit_top = -680
