@@ -1,11 +1,11 @@
 2a60927148abd1d33b818b535e306557
-::res://::1692920202
+::res://::1693518122
 icon.svg::CompressedTexture2D::3054770086579099451::1684449471::1684449476::1::::<><>::
-::res://Scenes/::1692920180
-level_scene.tscn::PackedScene::8136780000844973672::1692920159::0::1::::<><>::uid://d1r2yhttathlu<>uid://c2ixhvbdssd0y<>uid://bgg0diocuh5qk<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>uid://bjr0u8jj8p0k2
-nacho_test_scene.tscn::PackedScene::5961319338491966855::1692920159::0::1::::<><>::uid://d1r2yhttathlu<>uid://bgg0diocuh5qk<>uid://c2ixhvbdssd0y<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>uid://bjr0u8jj8p0k2
-nico_test_scene.tscn::PackedScene::1174474797619290558::1692920180::0::1::::<><>::uid://d1r2yhttathlu<>uid://bgg0diocuh5qk<>uid://c2ixhvbdssd0y<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>res://Scenes/PlayerController.gd<>uid://bjr0u8jj8p0k2
-PlayerController.gd::GDScript::-1::1692920102::0::1::::<>CharacterBody2D<>::
+::res://Scenes/::1692923782
+level_scene.tscn::PackedScene::8136780000844973672::1692923782::0::1::::<><>::uid://d1r2yhttathlu<>uid://c2ixhvbdssd0y<>uid://bgg0diocuh5qk<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>uid://bjr0u8jj8p0k2
+nacho_test_scene.tscn::PackedScene::5961319338491966855::1692923782::0::1::::<><>::uid://d1r2yhttathlu<>uid://bgg0diocuh5qk<>uid://c2ixhvbdssd0y<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>uid://bjr0u8jj8p0k2
+nico_test_scene.tscn::PackedScene::1174474797619290558::1692923782::0::1::::<><>::uid://d1r2yhttathlu<>uid://bgg0diocuh5qk<>uid://c2ixhvbdssd0y<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>res://Scenes/PlayerController.gd<>uid://bjr0u8jj8p0k2
+PlayerController.gd::GDScript::-1::1692923672::0::1::::<>CharacterBody2D<>::
 ::res://Sprites/::1692311790
 AcestriderSea.png::CompressedTexture2D::9020949023224336606::1692305049::1692305049::1::::<><>::
 AcestriderSky.png::CompressedTexture2D::6685865263732747206::1692309901::1692309905::1::::<><>::
