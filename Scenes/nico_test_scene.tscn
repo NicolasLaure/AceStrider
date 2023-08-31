@@ -13,65 +13,10 @@
 [node name="LevelScene" type="Node2D"]
 position = Vector2(1, 0)
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-follow_viewport_enabled = true
-scroll_ignore_camera_zoom = true
-
-[node name="BackGround" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(1, 0)
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="Sea" type="Sprite2D" parent="ParallaxBackground/BackGround"]
-texture_repeat = 2
-position = Vector2(-1, 525)
-scale = Vector2(1, 1.09091)
-texture = ExtResource("1_ad2th")
-region_enabled = true
-region_rect = Rect2(0, 0, 12288, 330)
-
-[node name="Reflection" type="Sprite2D" parent="ParallaxBackground/BackGround"]
-modulate = Color(1, 1, 1, 0.266667)
-z_index = 1
-texture_repeat = 2
-position = Vector2(-1, 510.5)
-scale = Vector2(1, 0.501976)
-texture = ExtResource("2_aqb6c")
-flip_v = true
-region_enabled = true
-region_rect = Rect2(0, 0, 12288, 759)
-
-[node name="Sky" type="Sprite2D" parent="ParallaxBackground/BackGround"]
-z_index = -3
-texture_repeat = 2
-position = Vector2(-1, 12.5)
-scale = Vector2(1, 1.03906)
-texture = ExtResource("3_shqj2")
-region_enabled = true
-region_rect = Rect2(0, 0, 12288, 640)
-
-[node name="Limit" type="Sprite2D" parent="ParallaxBackground/BackGround"]
-z_index = -4
-texture_repeat = 2
-position = Vector2(-0.500214, -321.039)
-scale = Vector2(0.999919, 1.02867)
-texture = ExtResource("5_xuvjp")
-region_enabled = true
-region_rect = Rect2(0, 0, 12288, 754)
-
-[node name="ForeGround" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.3, 0.3)
-
-[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+[node name="Player" type="CharacterBody2D" parent="."]
 z_index = -2
 z_as_relative = false
-texture_repeat = 2
-position = Vector2(0, 12.5)
-scale = Vector2(1, 1.03906)
-texture = ExtResource("4_gk851")
-region_enabled = true
-region_rect = Rect2(0, 0, 12288, 758)
-
-[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(1075, 540)
 slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("6_3xnl4")
@@ -81,8 +26,9 @@ gravity = 150.0
 rotation_speed = 250.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-limit_top = -680
-limit_bottom = 600
+zoom = Vector2(1.228, 1.228)
+limit_top = -361
+limit_bottom = 1029
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -94,7 +40,64 @@ scale = Vector2(0.8, 1.2)
 shape = SubResource("CapsuleShape2D_gl8v1")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-z_index = -1
-z_as_relative = false
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("6_nfhc5")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="BackGround" type="ParallaxLayer" parent="ParallaxBackground"]
+z_as_relative = false
+motion_scale = Vector2(0.2, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sea" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, 751)
+texture = ExtResource("1_ad2th")
+centered = false
+region_rect = Rect2(0, 0, 12288, 330)
+
+[node name="Reflection" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+modulate = Color(1, 1, 1, 0.258824)
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, 751)
+scale = Vector2(1, 0.463855)
+texture = ExtResource("2_aqb6c")
+centered = false
+flip_v = true
+region_rect = Rect2(0, 0, 12288, 759)
+
+[node name="Sky" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+z_index = -3
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(-1, 12.5)
+texture = ExtResource("3_shqj2")
+centered = false
+region_rect = Rect2(0, 0, 12288, 640)
+
+[node name="UpperLimit" type="Sprite2D" parent="ParallaxBackground/BackGround"]
+z_index = -1
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(-0.500214, -372)
+texture = ExtResource("5_xuvjp")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 400)
+
+[node name="ForeGround" type="ParallaxLayer" parent="ParallaxBackground"]
+z_as_relative = false
+motion_scale = Vector2(0.3, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
+z_index = -3
+z_as_relative = false
+texture_repeat = 2
+position = Vector2(0, 12.5)
+texture = ExtResource("4_gk851")
+centered = false
+region_rect = Rect2(0, 0, 12288, 758)
