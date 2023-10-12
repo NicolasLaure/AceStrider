@@ -22,6 +22,7 @@ floor_stop_on_slope = false
 script = ExtResource("6_3xnl4")
 speed = 500.0
 friction = 50.0
+recoil = 25.0
 maxSpeed = 500.0
 gravity = 150.0
 rotation_speed = 250.0

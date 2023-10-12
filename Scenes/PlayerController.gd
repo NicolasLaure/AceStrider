@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var speed: float;
 @export var friction: float;
+@export var recoil: float;
 @export var maxSpeed: float;
 @export var gravity: float;
 @export var rotation_speed: float;
@@ -43,5 +44,9 @@ func Shoot():
 	
 	get_parent().add_child(bullet);
 	bullet.position = $Marker2D.global_position;
-	bullet.dir = dir;
+	
+	velocity.y -= dir.y * recoil;
+	velocity.x -= dir.x * recoil;
+	
+	bullet.rotation = deg_to_rad(randf_range(rad_to_deg(rotation) - 15, rad_to_deg(rotation) + 15));
 pass
