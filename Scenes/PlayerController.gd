@@ -5,11 +5,9 @@ extends CharacterBody2D
 @export var gravity: float;
 @export var rotation_speed: float;
 var dir:Vector2;
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+const bulletPath = preload("res://Scripts/Bullet.tscn");
+
 func _process(delta):
 	
 	dir = Vector2.from_angle(rotation - deg_to_rad(90));
@@ -34,4 +32,15 @@ func _process(delta):
 	if(Input.is_key_pressed(KEY_D)):
 		rotate(deg_to_rad(rotation_speed * delta));
 		
+	if(Input.is_action_just_pressed("Shoot")):
+		Shoot();
+pass
+
+
+func Shoot():
+	var bullet = bulletPath.instantiate();
+	
+	get_parent().add_child(bullet);
+	bullet.position = $Marker2D.global_position;
+	bullet.dir = dir;
 pass

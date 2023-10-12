@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://kbqhemkqvdfu"]
+
+[ext_resource type="Texture2D" uid="uid://dqdsbyibernn4" path="res://Sprites/Bullet.png" id="1_dhgop"]
+
+[sub_resource type="GDScript" id="GDScript_06pfs"]
+script/source = "extends CharacterBody2D
+
+var dir = Vector2(0,0);
+var speed = 500;
+
+# Get the gravity from the project settings to be synced with RigidBody nodes.
+var gravity = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+
+func _physics_process(delta):
+	var collision_info = move_and_collide(dir.normalized() * delta * speed);
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gorws"]
+
+[node name="Bullet" type="CharacterBody2D"]
+script = SubResource("GDScript_06pfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.888, 0.888)
+shape = SubResource("CircleShape2D_gorws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_dhgop")
