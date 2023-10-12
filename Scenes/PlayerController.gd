@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float;
+@export var friction: float;
 @export var maxSpeed: float;
 @export var gravity: float;
 @export var rotation_speed: float;
@@ -19,9 +20,9 @@ func _process(delta):
 		velocity.x += dir.x * speed * delta;
 	else:
 		if(velocity.x < 0):
-			velocity.x += 1 * speed / 4 * delta;
+			velocity.x += friction * delta;
 		elif(velocity.x > 0):
-			velocity.x += -1 * speed / 4 * delta;
+			velocity.x -= friction * delta;
 	
 	velocity.x = clampf(velocity.x, maxSpeed * -1, maxSpeed);
 	velocity.y = clampf(velocity.y, maxSpeed * -1, maxSpeed);
