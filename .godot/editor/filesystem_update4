@@ -1,5 +1,4 @@
-res://Scenes/nico_test_scene.tscn
-res://Scenes/level_scene.tscn
 res://Scenes/nacho_test_scene.tscn
+res://Scenes/level_scene.tscn
 res://Scripts/Bullet.tscn
-res://Scenes/enemy.gd
+res://Scenes/nico_test_scene.tscn

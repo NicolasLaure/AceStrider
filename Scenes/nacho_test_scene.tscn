@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cq6yb8xcg4hml"]
+[gd_scene load_steps=11 format=3 uid="uid://cq6yb8xcg4hml"]
 
 [ext_resource type="Texture2D" uid="uid://d1r2yhttathlu" path="res://Sprites/AcestriderSea.png" id="1_6jcr5"]
 [ext_resource type="Script" path="res://Scenes/PlayerController.gd" id="1_12msa"]
@@ -7,42 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://c2ixhvbdssd0y" path="res://Sprites/AcestriderSky.png" id="3_lj7cc"]
 [ext_resource type="Texture2D" uid="uid://cexrigwvmbwqj" path="res://Sprites/AcestriderSkyClouds.png" id="4_o4kv8"]
 [ext_resource type="Texture2D" uid="uid://cu52f7avasay" path="res://Sprites/AcestriderSkyLimit.png" id="5_xlkmw"]
-[ext_resource type="Texture2D" uid="uid://bjr0u8jj8p0k2" path="res://icon.svg" id="6_jn2fw"]
+[ext_resource type="PackedScene" uid="uid://c5hol6vrdyx6n" path="res://Scripts/big_ship.tscn" id="8_nia6i"]
+[ext_resource type="PackedScene" uid="uid://c2qgllmqd4v5" path="res://Scripts/small_ship.tscn" id="9_wl7ff"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
-
-[sub_resource type="GDScript" id="GDScript_gibry"]
-script/source = "extends CharacterBody2D
-
-const SPEED = 50.0
-var dir:Vector2
-var isMovingRight:bool
-var timer:float
-var movingCooldown:float = 0
-
-func _physics_process(delta):
-	if (timer >= movingCooldown):
-		movingCooldown = randf_range(10, 40)
-		timer = 0
-		if (isMovingRight):
-			isMovingRight = false
-		else:
-			isMovingRight = true
-	else: 
-		timer += delta
-	
-	if (isMovingRight):
-		dir.x = 1
-	else: 
-		dir.x = -1
-
-	translate(dir * SPEED * delta)
-	pass
-
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_svkj1"]
-size = Vector2(271.375, 72.5)
 
 [node name="LevelScene" type="Node2D"]
 position = Vector2(1, 0)
@@ -147,16 +115,6 @@ texture = ExtResource("4_o4kv8")
 centered = false
 region_rect = Rect2(0, 0, 12288, 758)
 
-[node name="Big Ship" type="CharacterBody2D" parent="."]
-script = SubResource("GDScript_gibry")
+[node name="Big Ship" parent="." instance=ExtResource("8_nia6i")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Big Ship"]
-position = Vector2(1023.1, 737.417)
-rotation = -0.00558264
-scale = Vector2(2.11719, 0.570313)
-texture = ExtResource("6_jn2fw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Big Ship"]
-position = Vector2(1023.1, 737.417)
-rotation = -0.00558264
-shape = SubResource("RectangleShape2D_svkj1")
+[node name="Small Ship" parent="." instance=ExtResource("9_wl7ff")]
