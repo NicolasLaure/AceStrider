@@ -37,10 +37,7 @@ func _process(delta):
 				velocity.x += friction * delta;
 			elif(velocity.x > 0):
 				velocity.x -= friction * delta;
-	
-		# -180-760
-	
-		
+
 	velocity.x = clampf(velocity.x, maxSpeed * -1, maxSpeed);
 	velocity.y = clampf(velocity.y, maxSpeed * -1, maxSpeed);
 	translate(velocity * delta);
