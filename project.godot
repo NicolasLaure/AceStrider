@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Acestrider"
-run/main_scene="res://Scenes/nico_test_scene.tscn"
+run/main_scene="res://Scenes/nacho_test_scene.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
