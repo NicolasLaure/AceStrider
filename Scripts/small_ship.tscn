@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2qgllmqd4v5"]
+
+[ext_resource type="Texture2D" uid="uid://bjr0u8jj8p0k2" path="res://icon.svg" id="1_rnhfy"]
+
+[sub_resource type="GDScript" id="GDScript_gkioo"]
+script/source = "extends CharacterBody2D
+
+const SPEED = 100.0
+var dir:Vector2
+var isMovingRight:bool
+var timer:float
+var movingCooldown:float = 0
+
+func _physics_process(delta):
+	if (timer >= movingCooldown):
+		movingCooldown = randf_range(2, 10)
+		timer = 0
+		if (isMovingRight):
+			isMovingRight = false
+		else:
+			isMovingRight = true
+	else: 
+		timer += delta
+	
+	if (isMovingRight):
+		dir.x = 1
+	else: 
+		dir.x = -1
+
+	translate(dir * SPEED * delta)
+	pass
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kiqne"]
+size = Vector2(89, 20)
+
+[node name="Small Ship" type="CharacterBody2D"]
+position = Vector2(750, 745.788)
+script = SubResource("GDScript_gkioo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.695312, 0.15625)
+texture = ExtResource("1_rnhfy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kiqne")
