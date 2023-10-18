@@ -16,7 +16,7 @@ position = Vector2(1, 0)
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = -2
 z_as_relative = false
-position = Vector2(1075, 540)
+position = Vector2(1075, 505)
 slide_on_ceiling = false
 floor_stop_on_slope = false
 script = ExtResource("6_3xnl4")
@@ -26,6 +26,7 @@ recoil = 25.0
 maxSpeed = 500.0
 gravity = 150.0
 rotation_speed = 250.0
+limitBounce = 1000.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.6, 1.6)
