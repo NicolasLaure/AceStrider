@@ -10,8 +10,11 @@ var dir:Vector2
 var isMovingRight:bool
 var timer:float
 var movingCooldown:float = 0
+var shootTimer:float
+var shootCooldown:float = 1
+const bulletPath = preload(\"res://Scripts/Bullet.tscn\")
 
-func _physics_process(delta):
+func _physics_process(delta):	
 	if (timer >= movingCooldown):
 		movingCooldown = randf_range(10, 40)
 		timer = 0
@@ -28,7 +31,28 @@ func _physics_process(delta):
 		dir.x = -1
 
 	translate(dir * SPEED * delta)
-	pass
+	
+	if (shootTimer >= shootCooldown):
+		shootTimer = 0
+		Shoot();
+	else:
+		shootTimer += delta
+pass
+	
+func Shoot():
+	var bullet = bulletPath.instantiate()
+	
+	var playerPosition = get_tree().root.get_node(\"LevelScene/Player\").position
+	
+	get_parent().add_child(bullet)
+	bullet.position = $Marker2D.global_position
+	
+	velocity.y -= dir.y 
+	velocity.x -= dir.x 
+
+	bullet.dir = playerPosition - position
+	bullet.rotation = rad_to_deg(atan2(bullet.dir.y, bullet.dir.x)) 
+pass
 
 "
 
@@ -39,12 +63,13 @@ size = Vector2(271.375, 72.5)
 script = SubResource("GDScript_gibry")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1023.1, 737.417)
 rotation = -0.00558264
 scale = Vector2(2.11719, 0.570313)
 texture = ExtResource("1_5cvhd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1023.1, 737.417)
 rotation = -0.00558264
 shape = SubResource("RectangleShape2D_svkj1")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -54)

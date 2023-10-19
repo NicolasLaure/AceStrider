@@ -1,4 +1,5 @@
 2a60927148abd1d33b818b535e306557
+<<<<<<< Updated upstream
 ::res://::1697669470
 icon.svg::CompressedTexture2D::3054770086579099451::1692915654::1697665607::1::::<><>::
 ::res://Scenes/::1697669281
@@ -14,5 +15,25 @@ AcestriderSea.png::CompressedTexture2D::9020949023224336606::1692915654::1692915
 AcestriderSky.png::CompressedTexture2D::6685865263732747206::1692915654::1692915654::1::::<><>::
 AcestriderSkyClouds.png::CompressedTexture2D::5102124255606018793::1692915654::1692915654::1::::<><>::
 AcestriderSkyLimit.png::CompressedTexture2D::183535280654262320::1692915654::1692915654::1::::<><>::
+=======
+::res://::1697755451
+icon.svg::CompressedTexture2D::3054770086579099451::1692915654::1697665607::1::::<><>::
+::res://Scenes/::1697755432
+level_scene.tscn::PackedScene::8136780000844973672::1697753907::0::1::::<><>::uid://d1r2yhttathlu<>uid://c2ixhvbdssd0y<>uid://bgg0diocuh5qk<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>uid://bjr0u8jj8p0k2
+nacho_test_scene.tscn::PackedScene::8543101149345253788::1697755432::0::1::::<><>::uid://d1r2yhttathlu<>res://Scripts/PlayerController.gd<>uid://w4nahi4v00vy<>uid://bgg0diocuh5qk<>uid://c2ixhvbdssd0y<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>uid://c5hol6vrdyx6n<>uid://c2qgllmqd4v5
+nico_test_scene.tscn::PackedScene::9166280573605263068::1697755432::0::1::::<><>::res://Scripts/PlayerController.gd<>uid://d1r2yhttathlu<>uid://bgg0diocuh5qk<>uid://w4nahi4v00vy<>uid://c2ixhvbdssd0y<>uid://cexrigwvmbwqj<>uid://cu52f7avasay<>res://Scripts/ShipSpawner.gd
+::res://Scripts/::1697755432
+big_ship.tscn::PackedScene::6893828663879405783::1697755431::0::1::::<><>::uid://bjr0u8jj8p0k2
+Bullet.tscn::PackedScene::704937015683599538::1697753907::0::1::::<><>::uid://dqdsbyibernn4
+PlayerController.gd::GDScript::-1::1697755432::0::1::::<>CharacterBody2D<>::
+ShipSpawner.gd::GDScript::-1::1697755432::0::1::::<>Marker2D<>::
+small_ship.tscn::PackedScene::197098668599830324::1697670152::0::1::::<><>::uid://bjr0u8jj8p0k2
+::res://Sprites/::1697670127
+A4SkyHawkt.png::CompressedTexture2D::1604811217178998910::1697665561::1697665561::1::::<><>::
+AcestriderSea.png::CompressedTexture2D::9020949023224336606::1692915654::1692915654::1::::<><>::
+AcestriderSky.png::CompressedTexture2D::6685865263732747206::1697670127::1692915654::1::::<><>::
+AcestriderSkyClouds.png::CompressedTexture2D::5102124255606018793::1692915654::1692915654::1::::<><>::
+AcestriderSkyLimit.png::CompressedTexture2D::183535280654262320::1697670127::1692915654::1::::<><>::
+>>>>>>> Stashed changes
 AcestriderSkyReflection.png::CompressedTexture2D::2821463736178501210::1692915654::1692915654::1::::<><>::
 Bullet.png::CompressedTexture2D::8289572647184005107::1697665561::1697665561::1::::<><>::

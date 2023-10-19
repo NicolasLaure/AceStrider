@@ -116,5 +116,6 @@ centered = false
 region_rect = Rect2(0, 0, 12288, 758)
 
 [node name="Big Ship" parent="." instance=ExtResource("8_nia6i")]
+position = Vector2(496, 733)
 
 [node name="Small Ship" parent="." instance=ExtResource("9_wl7ff")]
