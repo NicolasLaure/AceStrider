@@ -21,6 +21,8 @@ func _process(delta):
 	if(smallShipTimer >= smallShipRespawnCoolDown):
 		var smallShip = smallShipPath.instantiate();
 		get_parent().add_child(smallShip);
+		smallShip.position.x = position.x;
+		smallShip.position.y = 734;
 		smallShipTimer = 0;
 	else:
 		smallShipTimer+= delta;
@@ -28,6 +30,8 @@ func _process(delta):
 	if(bigShipTimer >= bigShipRespawnCoolDown):
 		var bigShip = bigShipPath.instantiate();
 		get_parent().add_child(bigShip);
+		bigShip.position.x = position.x;
+		bigShip.position.y = 734;
 		bigShipTimer = 0;
 	else:
 		bigShipTimer+= delta;

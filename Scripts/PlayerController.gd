@@ -18,8 +18,6 @@ func _process(delta):
 	
 	dir = Vector2.from_angle(rotation - deg_to_rad(90));
 	
-	
-	
 	isOffLowerLimit = position.y > 760;
 	isOffUpperLimit = position.y < -180;
 	
