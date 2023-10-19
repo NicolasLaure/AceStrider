@@ -1,7 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq6yb8xcg4hml"]
+[gd_scene load_steps=11 format=3 uid="uid://dtylvlx0wvc2w"]
 
 [ext_resource type="Texture2D" uid="uid://d1r2yhttathlu" path="res://Sprites/AcestriderSea.png" id="1_6jcr5"]
-[ext_resource type="Script" path="res://Scenes/PlayerController.gd" id="1_12msa"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_aanqc"]
 [ext_resource type="Texture2D" uid="uid://w4nahi4v00vy" path="res://Sprites/A4SkyHawkt.png" id="2_j5swp"]
 [ext_resource type="Texture2D" uid="uid://bgg0diocuh5qk" path="res://Sprites/AcestriderSkyReflection.png" id="2_vtwbv"]
 [ext_resource type="Texture2D" uid="uid://c2ixhvbdssd0y" path="res://Sprites/AcestriderSky.png" id="3_lj7cc"]
@@ -12,7 +12,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
 
-[node name="LevelScene" type="Node2D"]
+[node name="LevelScene2" type="Node2D"]
 position = Vector2(1, 0)
 
 [node name="Player" type="CharacterBody2D" parent="."]
@@ -21,7 +21,7 @@ z_as_relative = false
 position = Vector2(1075, 540)
 slide_on_ceiling = false
 floor_stop_on_slope = false
-script = ExtResource("1_12msa")
+script = ExtResource("1_aanqc")
 speed = 500.0
 friction = 50.0
 recoil = 25.0

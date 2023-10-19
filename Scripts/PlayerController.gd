@@ -18,7 +18,7 @@ func _process(delta):
 	
 	dir = Vector2.from_angle(rotation - deg_to_rad(90));
 	
-	velocity.y += gravity * delta;
+	
 	
 	isOffLowerLimit = position.y > 760;
 	isOffUpperLimit = position.y < -180;
@@ -32,11 +32,19 @@ func _process(delta):
 		if(Input.is_action_pressed("Thrust")):
 			velocity.y += dir.y * speed * delta;
 			velocity.x += dir.x * speed * delta;
-		else:
-			if(velocity.x < 0):
-				velocity.x += friction * delta;
-			elif(velocity.x > 0):
-				velocity.x -= friction * delta;
+			
+		if(abs(dir.y) > 0.1):
+			velocity.y += gravity * delta;
+		elif(velocity.y < 0):
+			velocity.y += gravity * delta * delta;
+			
+	else:
+		if(velocity.x < 0):
+			velocity.x += friction * delta;
+		elif(velocity.x > 0):
+			velocity.x -= friction * delta;
+			
+		velocity.y += gravity * delta;
 
 	velocity.x = clampf(velocity.x, maxSpeed * -1, maxSpeed);
 	velocity.y = clampf(velocity.y, maxSpeed * -1, maxSpeed);

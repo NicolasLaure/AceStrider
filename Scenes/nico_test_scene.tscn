@@ -1,12 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://qy6ote3u3q0m"]
+[gd_scene load_steps=10 format=3 uid="uid://d3uhki6ns0hds"]
 
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_4em72"]
 [ext_resource type="Texture2D" uid="uid://d1r2yhttathlu" path="res://Sprites/AcestriderSea.png" id="1_ad2th"]
 [ext_resource type="Texture2D" uid="uid://bgg0diocuh5qk" path="res://Sprites/AcestriderSkyReflection.png" id="2_aqb6c"]
 [ext_resource type="Texture2D" uid="uid://w4nahi4v00vy" path="res://Sprites/A4SkyHawkt.png" id="2_m0rlm"]
 [ext_resource type="Texture2D" uid="uid://c2ixhvbdssd0y" path="res://Sprites/AcestriderSky.png" id="3_shqj2"]
 [ext_resource type="Texture2D" uid="uid://cexrigwvmbwqj" path="res://Sprites/AcestriderSkyClouds.png" id="4_gk851"]
 [ext_resource type="Texture2D" uid="uid://cu52f7avasay" path="res://Sprites/AcestriderSkyLimit.png" id="5_xuvjp"]
-[ext_resource type="Script" path="res://Scenes/PlayerController.gd" id="6_3xnl4"]
+[ext_resource type="Script" path="res://Scripts/ShipSpawner.gd" id="8_nyggi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
 
@@ -19,7 +20,7 @@ z_as_relative = false
 position = Vector2(1075, 505)
 slide_on_ceiling = false
 floor_stop_on_slope = false
-script = ExtResource("6_3xnl4")
+script = ExtResource("1_4em72")
 speed = 500.0
 friction = 50.0
 recoil = 25.0
@@ -155,3 +156,8 @@ texture = ExtResource("5_xuvjp")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1920, 400)
+
+[node name="ShipSpawner" type="Marker2D" parent="."]
+script = ExtResource("8_nyggi")
+bigShipRespawnCoolDown = 10.0
+smallShipRespawnCoolDown = 5.0
