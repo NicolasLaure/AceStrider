@@ -33,10 +33,10 @@ func _process(delta):
 			velocity.y += dir.y * speed * delta;
 			velocity.x += dir.x * speed * delta;
 			
-		if(abs(dir.y) > 0.1):
-			velocity.y += gravity * delta;
-		elif(velocity.y < 0):
+		if(abs(dir.y) < 0.1 && velocity.y > 0):
 			velocity.y += gravity * delta * delta;
+		else:
+			velocity.y += gravity * delta;
 			
 	else:
 		if(velocity.x < 0):
