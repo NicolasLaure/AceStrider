@@ -8,12 +8,28 @@ extends CharacterBody2D
 @export var rotation_speed: float;
 @export var limitBounce: float;
 
+@export var maxHealth: float;
+@export var healthRecoveryRate: float;
+@export var healthCoolDown:float;
+
+var currentHealth: float;
+
 var isOffLowerLimit: bool;
 var isOffUpperLimit: bool;
 var dir:Vector2;
 
 const bulletPath = preload("res://Scripts/Bullet.tscn");
 
+var healthBG;
+var healthMultiplier: float;
+
+var healthRecoverTimer:float;
+func _ready():
+	healthBG = get_node("Health BackGround");
+	currentHealth = maxHealth;
+	healthRecoverTimer = 0;
+	pass
+	
 func _process(delta):
 	
 	dir = Vector2.from_angle(rotation - deg_to_rad(90));
@@ -23,8 +39,10 @@ func _process(delta):
 	
 	if(isOffLowerLimit):
 		velocity.y -= limitBounce * delta;
+		TakeDamage(50 * delta);
 	elif(isOffUpperLimit):
 		velocity.y += limitBounce * delta;
+		TakeDamage(30 * delta);
 	
 	if(!isOffLowerLimit && !isOffUpperLimit):
 		if(Input.is_action_pressed("Thrust")):
@@ -55,8 +73,31 @@ func _process(delta):
 		
 	if(Input.is_action_just_pressed("Shoot")):
 		Shoot();
+		healthRecoverTimer = 0;
+		
+	if(!Input.is_action_pressed("Shoot")):
+		healthRecoverTimer += delta;
+	
+	if(healthRecoverTimer >= healthCoolDown):
+		currentHealth = clampf(currentHealth +healthRecoveryRate, 0, maxHealth);
+		
+	healthMultiplier = clampf(currentHealth / maxHealth, 0,1);
+	healthBG.set_modulate( Color(255, 255, 255, (1 - healthMultiplier) * 230 / 255));
+	var healthBGScale = clampf(24 * healthMultiplier, 1, 25);
+	healthBG.set_scale(Vector2(healthBGScale,healthBGScale));
+	
+	if(Input.is_key_pressed(KEY_MINUS)):
+		TakeDamage(1);
+	
+	if(currentHealth <= 0):
+		get_parent().game_over.emit();
+	
 pass
 
+func TakeDamage(damage):
+	currentHealth -= damage;
+	healthRecoverTimer = 0;
+pass
 
 func Shoot():
 	var bullet = bulletPath.instantiate();
