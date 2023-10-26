@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://kbqhemkqvdfu"]
+[gd_scene load_steps=4 format=3 uid="uid://c7jg3admurrsu"]
 
-[ext_resource type="Texture2D" uid="uid://dqdsbyibernn4" path="res://Sprites/Bullet.png" id="1_dhgop"]
+[ext_resource type="Texture2D" uid="uid://dqdsbyibernn4" path="res://Sprites/Bullet.png" id="1_v4psl"]
 
 [sub_resource type="GDScript" id="GDScript_06pfs"]
 script/source = "extends CharacterBody2D
@@ -9,7 +9,7 @@ var speed = 500;
 var dir:Vector2;
 
 func _ready():
-	set_meta(\"type\", \"enemyBullet\")
+	set_meta(\"type\", \"player_bullet\")
 	pass
 
 func _physics_process(delta):
@@ -35,11 +35,11 @@ script = SubResource("GDScript_06pfs")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_dhgop")
+texture = ExtResource("1_v4psl")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_dhgop")
+texture = ExtResource("1_v4psl")
 
 [node name="Area2D" type="Area2D" parent="."]
 

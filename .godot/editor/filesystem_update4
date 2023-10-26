@@ -4,3 +4,6 @@ res://Scenes/level_scene.tscn
 res://Scripts/Bullet.tscn
 res://Scripts/ShipSpawner.gd
 res://Scripts/big_ship.tscn
+res://Scripts/PlayerController.gd
+res://Scripts/small_ship.tscn
+res://Scripts/EnemyBullet.tscn

@@ -24,6 +24,8 @@ var healthBG;
 var healthMultiplier: float;
 
 var healthRecoverTimer:float;
+
+signal bulletCollision;
 func _ready():
 	healthBG = get_node("Health BackGround");
 	currentHealth = maxHealth;
@@ -110,3 +112,10 @@ func Shoot():
 
 	bullet.rotation = deg_to_rad(randf_range(rad_to_deg(rotation) - 15, rad_to_deg(rotation) + 15));
 pass
+
+
+func _on_area_2d_area_entered(area):
+	if(area.get_parent() == bulletPath):
+		area.get_parent().queue_free();
+		TakeDamage(50)
+	pass # Replace with function body.
