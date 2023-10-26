@@ -1,8 +1,9 @@
-Control
 Panel
+Button
+Control
+Node
 Sprite2D
 Marker2D
-Node
 CollisionShape2D
 CharacterBody2D
 Area2D

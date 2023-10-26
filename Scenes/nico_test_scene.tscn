@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3uhki6ns0hds"]
+[gd_scene load_steps=13 format=3 uid="uid://d3uhki6ns0hds"]
 
 [ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_4em72"]
 [ext_resource type="Texture2D" uid="uid://d1r2yhttathlu" path="res://Sprites/AcestriderSea.png" id="1_ad2th"]
@@ -18,68 +18,44 @@ signal game_over;
 func _ready():
 	pass # Replace with function body.
 
-
+var isPaused = false;
+var isGameOver = false;
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
-
 func _on_game_over():
-	get_tree().paused = true;
-	
+	get_node(\"Control/Panel\").visible = true;
+	isGameOver = true;
+	pass # Replace with function body.
+
+func _on_button_pressed():
+	get_tree().reload_current_scene()
 	pass # Replace with function body.
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gl8v1"]
 
+[sub_resource type="GDScript" id="GDScript_2gqyd"]
+script/source = "extends Control
+
+
+var playerPosition
+
+func _ready():
+	pass 
+
+var isgameover
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	playerPosition = get_tree().root.get_node(\"LevelScene/Player\").position;
+	set_position(Vector2(playerPosition.x, 485));
+	pass
+"
+
 [node name="LevelScene" type="Node2D"]
 position = Vector2(1, 0)
 script = SubResource("GDScript_xy7n3")
-
-[node name="Control" type="Control" parent="."]
-z_index = 10
-z_as_relative = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1075.0
-offset_top = 505.0
-offset_right = 1075.0
-offset_bottom = 505.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.912, 1.912)
-
-[node name="PausePanel" type="Panel" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -412.0
-offset_top = -236.0
-offset_right = 408.0
-offset_bottom = 244.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GameOver" type="Panel" parent="Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -411.0
-offset_top = -238.0
-offset_right = 409.0
-offset_bottom = 242.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = -2
@@ -138,6 +114,7 @@ layer = -1
 
 [node name="BackGround" type="ParallaxLayer" parent="ParallaxBackground"]
 z_as_relative = false
+texture_filter = 1
 motion_scale = Vector2(0.2, 1)
 motion_mirroring = Vector2(1920, 0)
 
@@ -145,6 +122,7 @@ motion_mirroring = Vector2(1920, 0)
 modulate = Color(1, 1, 1, 0.258824)
 z_index = 1
 z_as_relative = false
+texture_filter = 1
 texture_repeat = 2
 position = Vector2(0, 751)
 scale = Vector2(1, 0.463855)
@@ -155,6 +133,7 @@ region_rect = Rect2(0, 0, 12288, 759)
 
 [node name="Sky" type="Sprite2D" parent="ParallaxBackground/BackGround"]
 z_index = -3
+texture_filter = 1
 texture_repeat = 2
 position = Vector2(0, -255)
 texture = ExtResource("3_shqj2")
@@ -187,6 +166,7 @@ motion_mirroring = Vector2(1920, 0)
 [node name="Clouds" type="Sprite2D" parent="ParallaxBackground/ForeGround"]
 z_index = -3
 z_as_relative = false
+texture_filter = 1
 texture_repeat = 2
 position = Vector2(0, 12.5)
 texture = ExtResource("4_gk851")
@@ -198,6 +178,7 @@ layer = 0
 
 [node name="BackGround" type="ParallaxLayer" parent="ParallaxBackground/ParallaxBackground"]
 z_as_relative = false
+texture_filter = 1
 motion_scale = Vector2(0.2, 1)
 motion_mirroring = Vector2(1920, 0)
 
@@ -205,6 +186,7 @@ motion_mirroring = Vector2(1920, 0)
 modulate = Color(1, 1, 1, 0.858824)
 z_index = 1
 z_as_relative = false
+texture_filter = 1
 texture_repeat = 2
 position = Vector2(0, 751)
 scale = Vector2(1, 0.463855)
@@ -238,4 +220,53 @@ script = ExtResource("8_nyggi")
 bigShipRespawnCoolDown = 10.0
 smallShipRespawnCoolDown = 5.0
 
+[node name="Control" type="Control" parent="."]
+z_index = 120
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1099.0
+offset_top = 485.0
+offset_right = 1139.0
+offset_bottom = 525.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_2gqyd")
+
+[node name="Panel" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -975.0
+offset_top = -553.0
+offset_right = 976.0
+offset_bottom = 553.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Control/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -35.5
+offset_right = 72.0
+offset_bottom = 35.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Reset"
+
 [connection signal="game_over" from="." to="." method="_on_game_over"]
+[connection signal="game_over" from="." to="Control" method="_on_level_scene_game_over"]
+[connection signal="pressed" from="Control/Panel/Button" to="." method="_on_button_pressed"]
